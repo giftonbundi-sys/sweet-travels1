@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Savanna Safaris — Experience Africa's Wild Beauty Like Never Before</title>
+<meta name="description" content="Luxury safaris, eco-lodges, and unforgettable wildlife adventures across Africa. Book your safari with Savanna Safaris." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: '#2E5E3A',
+          'forest-dark': '#1F4128',
+          gold: '#C9A227',
+          'gold-light': '#E0BD4A',
+          earth: '#8B5A2B',
+          ivory: '#F8F6F0',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        boxShadow: {
+          luxury: '0 25px 60px -20px rgba(31,65,40,0.35)',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #F8F6F0; color: #1F2A22; }
+  h1,h2,h3,h4,.font-serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
+
+  /* Hero */
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(31,65,40,0.55) 60%, rgba(31,65,40,0.85) 100%),
+      url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=2400&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  @media (max-width: 768px) { .hero { background-attachment: scroll; } }
+
+  .parallax {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+  @media (max-width: 768px) { .parallax { background-attachment: scroll; } }
+
+  .card-hover { transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s; }
+  .card-hover:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -20px rgba(31,65,40,.35); }
+
+  .img-zoom { overflow: hidden; }
+  .img-zoom img { transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+  .img-zoom:hover img { transform: scale(1.08); }
+
+  .divider-gold { height:1px; background: linear-gradient(90deg, transparent, #C9A227, transparent); }
+
+  /* Masonry gallery */
+  .masonry { column-count: 1; column-gap: 1rem; }
+  @media (min-width: 640px) { .masonry { column-count: 2; } }
+  @media (min-width: 1024px) { .masonry { column-count: 3; } }
+  @media (min-width: 1280px) { .masonry { column-count: 4; } }
+  .masonry > * { break-inside: avoid; margin-bottom: 1rem; }
+
+  /* Testimonial scroll */
+  .scroll-x { scroll-snap-type: x mandatory; }
+  .scroll-x > * { scroll-snap-align: start; }
+  .scroll-x::-webkit-scrollbar { height: 6px; }
+  .scroll-x::-webkit-scrollbar-thumb { background: #C9A227; border-radius: 999px; }
+
+  /* Fade in on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Buttons */
+  .btn-gold { background:#C9A227; color:#1F2A22; }
+  .btn-gold:hover { background:#E0BD4A; }
+  .btn-outline { border:1px solid rgba(255,255,255,.6); color:#fff; }
+  .btn-outline:hover { background:#fff; color:#2E5E3A; }
+
+  /* Nav blur */
+  .nav-scrolled { background: rgba(248,246,240,.92); backdrop-filter: blur(10px); box-shadow: 0 6px 20px -10px rgba(0,0,0,.15); }
+  .nav-scrolled a, .nav-scrolled .brand { color:#1F4128 !important; }
+  .nav-scrolled .brand-mark { color:#C9A227 !important; }
+
+  /* Chat bubble */
+  .chat-bubble { animation: pulseGold 2.5s infinite; }
+  @keyframes pulseGold {
+    0%,100% { box-shadow: 0 0 0 0 rgba(201,162,39,.6); }
+    50% { box-shadow: 0 0 0 16px rgba(201,162,39,0); }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+    <a href="#home" class="brand flex items-center gap-2 text-white text-xl font-serif font-semibold tracking-wide">
+      <span class="brand-mark text-gold text-2xl">✦</span> Savanna Safaris
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-white/90">
+      <a href="#home" class="hover:text-gold">Home</a>
+      <a href="#about" class="hover:text-gold">About</a>
+      <a href="#packages" class="hover:text-gold">Safari Packages</a>
+      <a href="#destinations" class="hover:text-gold">Destinations</a>
+      <a href="#lodges" class="hover:text-gold">Lodges</a>
+      <a href="#conservation" class="hover:text-gold">Conservation</a>
+      <a href="#gallery" class="hover:text-gold">Gallery</a>
+      <a href="#blog" class="hover:text-gold">Blog</a>
+      <a href="#contact" class="hover:text-gold">Contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <select class="hidden sm:block bg-transparent border border-white/40 text-white text-xs rounded-full px-3 py-1.5 focus:outline-none">
+        <option class="text-gray-800">EN</option><option class="text-gray-800">FR</option>
+        <option class="text-gray-800">DE</option><option class="text-gray-800">SW</option>
+      </select>
+      <a href="#book" class="btn-gold rounded-full px-5 py-2.5 text-sm font-semibold">Book Now</a>
+      <button id="menuBtn" class="lg:hidden text-white text-2xl">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-ivory border-t border-forest/10 px-6 py-4 space-y-3 text-forest-dark font-medium">
+    <a href="#home" class="block">Home</a><a href="#about" class="block">About</a>
+    <a href="#packages" class="block">Safari Packages</a><a href="#destinations" class="block">Destinations</a>
+    <a href="#lodges" class="block">Lodges</a><a href="#conservation" class="block">Conservation</a>
+    <a href="#gallery" class="block">Gallery</a><a href="#blog" class="block">Blog</a>
+    <a href="#contact" class="block">Contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero min-h-screen flex items-center text-white relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-32 w-full">
+    <p class="text-gold tracking-[0.3em] text-xs uppercase mb-6 reveal">Luxury · Wildlife · Conservation</p>
+    <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.05] max-w-5xl reveal">
+      Experience Africa's <em class="text-gold not-italic">Wild Beauty</em> Like Never Before
+    </h1>
+    <p class="mt-8 text-lg md:text-xl text-white/85 max-w-2xl reveal">
+      Luxury safaris, eco-lodges, and unforgettable adventures in nature — crafted by guides who call the savanna home.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-4 reveal">
+      <a href="#book" class="btn-gold rounded-full px-8 py-4 text-sm font-semibold tracking-wide">Book a Safari →</a>
+      <a href="#destinations" class="btn-outline rounded-full px-8 py-4 text-sm font-semibold tracking-wide">Explore Destinations</a>
+    </div>
+
+    <!-- Quick search -->
+    <div id="book" class="mt-16 bg-white/95 text-gray-800 rounded-2xl shadow-luxury p-5 md:p-6 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl reveal">
+      <div>
+        <label class="text-[10px] uppercase tracking-wider text-gray-500">Destination</label>
+        <select class="w-full mt-1 bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest">
+          <option>Maasai Mara</option><option>Serengeti</option><option>Okavango Delta</option>
+          <option>Kruger</option><option>Bwindi</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-[10px] uppercase tracking-wider text-gray-500">Check-in</label>
+        <input type="date" class="w-full mt-1 bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest" />
+      </div>
+      <div>
+        <label class="text-[10px] uppercase tracking-wider text-gray-500">Check-out</label>
+        <input type="date" class="w-full mt-1 bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest" />
+      </div>
+      <div>
+        <label class="text-[10px] uppercase tracking-wider text-gray-500">Travelers</label>
+        <select class="w-full mt-1 bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest">
+          <option>2 Adults</option><option>1 Adult</option><option>2 Adults + 1 Child</option><option>Family of 4</option>
+        </select>
+      </div>
+      <button class="btn-gold rounded-full px-6 py-3 font-semibold col-span-2 md:col-span-1 self-end">Check Availability</button>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 text-xs tracking-[0.3em] uppercase">scroll ↓</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-28 bg-ivory">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="img-zoom rounded-2xl overflow-hidden h-72"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=900&q=80" alt="Elephants" /></div>
+        <div class="img-zoom rounded-2xl overflow-hidden h-72 mt-10"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=900&q=80" alt="Giraffe" /></div>
+        <div class="img-zoom rounded-2xl overflow-hidden h-56 -mt-6"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=900&q=80" alt="Lion" /></div>
+        <div class="img-zoom rounded-2xl overflow-hidden h-56"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=900&q=80" alt="Lodge" /></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">About Savanna Safaris</p>
+      <h2 class="font-serif text-4xl md:text-5xl text-forest-dark leading-tight">Twenty-five years of crafting the <em class="text-earth not-italic">soul-stirring</em> journey.</h2>
+      <div class="divider-gold my-8 max-w-xs"></div>
+      <p class="text-gray-700 leading-relaxed">Founded by third-generation guides, Savanna Safaris weaves luxury with stewardship. Every itinerary is hand-built around rhythms of the wild, rooted in deep partnerships with conservancies, rangers, and the communities who protect these landscapes.</p>
+      <div class="grid grid-cols-3 gap-6 mt-10">
+        <div><div class="font-serif text-4xl text-forest">25+</div><div class="text-xs uppercase tracking-wider text-gray-500 mt-1">Years guiding</div></div>
+        <div><div class="font-serif text-4xl text-forest">40k</div><div class="text-xs uppercase tracking-wider text-gray-500 mt-1">Travelers hosted</div></div>
+        <div><div class="font-serif text-4xl text-forest">12</div><div class="text-xs uppercase tracking-wider text-gray-500 mt-1">Conservancies</div></div>
+      </div>
+      <a href="#contact" class="inline-block mt-10 text-forest-dark font-semibold border-b-2 border-gold pb-1 hover:text-gold">Our Story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 reveal">
+      <div>
+        <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Signature Journeys</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-forest-dark">Safari Packages</h2>
+      </div>
+      <p class="max-w-md text-gray-600">Curated expeditions across Africa's most extraordinary wilderness, with private guides and intimate camps.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- card template -->
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Big Five"></div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500">
+            <span>7 Days · Kenya</span><span class="text-gold font-semibold">★ 4.9</span>
+          </div>
+          <h3 class="font-serif text-2xl text-forest-dark mt-3">The Big Five Safari</h3>
+          <p class="text-sm text-gray-600 mt-2">Track lion, leopard, elephant, buffalo and rhino across the Maasai Mara at first light.</p>
+          <ul class="text-sm text-gray-700 mt-4 space-y-1 list-disc pl-5">
+            <li>Private 4x4 with master guide</li><li>3 conservancies · 2 camps</li><li>Hot-air balloon at sunrise</li>
+          </ul>
+          <div class="flex items-center justify-between mt-6">
+            <div><span class="text-xs text-gray-500">from</span> <span class="font-serif text-2xl text-earth">$4,850</span></div>
+            <a href="#book" class="btn-gold rounded-full px-5 py-2 text-xs font-semibold">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Luxury safari"></div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500"><span>10 Days · Tanzania</span><span class="text-gold font-semibold">★ 5.0</span></div>
+          <h3 class="font-serif text-2xl text-forest-dark mt-3">Luxury Serengeti Voyage</h3>
+          <p class="text-sm text-gray-600 mt-2">Private bush plane, butler-tended tents, and a front-row seat to the Great Migration.</p>
+          <ul class="text-sm text-gray-700 mt-4 space-y-1 list-disc pl-5"><li>5-star tented suites</li><li>Champagne sundowners</li><li>Private chef & spa</li></ul>
+          <div class="flex items-center justify-between mt-6">
+            <div><span class="text-xs text-gray-500">from</span> <span class="font-serif text-2xl text-earth">$9,400</span></div>
+            <a href="#book" class="btn-gold rounded-full px-5 py-2 text-xs font-semibold">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Family"></div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500"><span>6 Days · Botswana</span><span class="text-gold font-semibold">★ 4.8</span></div>
+          <h3 class="font-serif text-2xl text-forest-dark mt-3">Family Wildlife Adventure</h3>
+          <p class="text-sm text-gray-600 mt-2">Kid-friendly trackers, junior ranger badges, and family suites by the Okavango.</p>
+          <ul class="text-sm text-gray-700 mt-4 space-y-1 list-disc pl-5"><li>Interconnected family suites</li><li>Mokoro canoe trips</li><li>Storytelling under stars</li></ul>
+          <div class="flex items-center justify-between mt-6">
+            <div><span class="text-xs text-gray-500">from</span> <span class="font-serif text-2xl text-earth">$5,200</span></div>
+            <a href="#book" class="btn-gold rounded-full px-5 py-2 text-xs font-semibold">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Birds"></div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500"><span>5 Days · Uganda</span><span class="text-gold font-semibold">★ 4.9</span></div>
+          <h3 class="font-serif text-2xl text-forest-dark mt-3">Bird Watching Expedition</h3>
+          <p class="text-sm text-gray-600 mt-2">Over 1,000 species across rainforest, wetland and rift valley with expert ornithologists.</p>
+          <ul class="text-sm text-gray-700 mt-4 space-y-1 list-disc pl-5"><li>Specialist binoculars provided</li><li>Dawn canopy walks</li><li>Field illustration class</li></ul>
+          <div class="flex items-center justify-between mt-6">
+            <div><span class="text-xs text-gray-500">from</span> <span class="font-serif text-2xl text-earth">$3,100</span></div>
+            <a href="#book" class="btn-gold rounded-full px-5 py-2 text-xs font-semibold">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Photography"></div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500"><span>8 Days · Namibia</span><span class="text-gold font-semibold">★ 5.0</span></div>
+          <h3 class="font-serif text-2xl text-forest-dark mt-3">Photography Safari</h3>
+          <p class="text-sm text-gray-600 mt-2">Custom hides, golden-hour drives, and one-to-one mentoring from award-winning shooters.</p>
+          <ul class="text-sm text-gray-700 mt-4 space-y-1 list-disc pl-5"><li>Pro lens loaner library</li><li>Edit suite in camp</li><li>Max 4 guests per vehicle</li></ul>
+          <div class="flex items-center justify-between mt-6">
+            <div><span class="text-xs text-gray-500">from</span> <span class="font-serif text-2xl text-earth">$6,750</span></div>
+            <a href="#book" class="btn-gold rounded-full px-5 py-2 text-xs font-semibold">Book Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-64"><img src="https://images.unsplash.com/photo-1489493512598-d08130f49bea?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Cultural"></div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500"><span>4 Days · Kenya</span><span class="text-gold font-semibold">★ 4.7</span></div>
+          <h3 class="font-serif text-2xl text-forest-dark mt-3">Cultural Heritage Tour</h3>
+          <p class="text-sm text-gray-600 mt-2">Walk with Maasai elders, share meals in homesteads, and learn beadwork from artisans.</p>
+          <ul class="text-sm text-gray-700 mt-4 space-y-1 list-disc pl-5"><li>Community-owned lodging</li><li>Traditional dance evenings</li><li>Local craft workshops</li></ul>
+          <div class="flex items-center justify-between mt-6">
+            <div><span class="text-xs text-gray-500">from</span> <span class="font-serif text-2xl text-earth">$2,450</span></div>
+            <a href="#book" class="btn-gold rounded-full px-5 py-2 text-xs font-semibold">Book Now</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX QUOTE -->
+<section class="parallax py-32 text-center text-white relative" style="background-image: linear-gradient(rgba(31,65,40,.6),rgba(31,65,40,.6)), url('https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=2000&q=80');">
+  <div class="max-w-3xl mx-auto px-6 reveal">
+    <p class="text-gold tracking-[0.3em] text-xs uppercase mb-6">— Karen Blixen</p>
+    <p class="font-serif text-3xl md:text-5xl italic leading-snug">"You know you are truly alive when you're living among lions."</p>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" class="py-28 bg-ivory">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Where Adventure Awaits</p>
+      <h2 class="font-serif text-4xl md:text-5xl text-forest-dark">Iconic Destinations</h2>
+      <p class="text-gray-600 mt-4">From windswept savannas to tropical coastlines and misty highlands.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="#" class="card-hover img-zoom relative rounded-2xl overflow-hidden h-80 group reveal">
+        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Mara">
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent"></div>
+        <div class="absolute bottom-0 p-6 text-white">
+          <span class="text-xs uppercase tracking-wider text-gold">National Park</span>
+          <h3 class="font-serif text-3xl mt-1">Maasai Mara</h3>
+          <p class="text-sm opacity-80 mt-1">Kenya · Open year-round</p>
+        </div>
+      </a>
+      <a href="#" class="card-hover img-zoom relative rounded-2xl overflow-hidden h-80 group reveal">
+        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Serengeti">
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent"></div>
+        <div class="absolute bottom-0 p-6 text-white"><span class="text-xs uppercase tracking-wider text-gold">Wildlife Reserve</span><h3 class="font-serif text-3xl mt-1">Serengeti</h3><p class="text-sm opacity-80 mt-1">Tanzania · Great Migration</p></div>
+      </a>
+      <a href="#" class="card-hover img-zoom relative rounded-2xl overflow-hidden h-80 group reveal">
+        <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Okavango">
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent"></div>
+        <div class="absolute bottom-0 p-6 text-white"><span class="text-xs uppercase tracking-wider text-gold">Wetlands</span><h3 class="font-serif text-3xl mt-1">Okavango Delta</h3><p class="text-sm opacity-80 mt-1">Botswana · Water safaris</p></div>
+      </a>
+      <a href="#" class="card-hover img-zoom relative rounded-2xl overflow-hidden h-80 group reveal">
+        <img src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Zanzibar">
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent"></div>
+        <div class="absolute bottom-0 p-6 text-white"><span class="text-xs uppercase tracking-wider text-gold">Beach Escape</span><h3 class="font-serif text-3xl mt-1">Zanzibar</h3><p class="text-sm opacity-80 mt-1">Tanzania · Spice Island</p></div>
+      </a>
+      <a href="#" class="card-hover img-zoom relative rounded-2xl overflow-hidden h-80 group reveal">
+        <img src="https://images.unsplash.com/photo-1589182337358-2cb63099350c?auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Kilimanjaro">
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent"></div>
+        <div class="absolute bottom-0 p-6 text-white"><span class="text-xs uppercase tracking-wider text-gold">Mountain Escape</span><h3 class="font-serif text-3xl mt-1">Mt. Kilimanjaro</h3><p class="text-sm opacity-80 mt-1">Tanzania · Roof of Africa</p></div>
+      </a>
+      <a href="#" class="card-hover img-zoom relative rounded-2xl overflow-hidden h-80 group reveal">
+        <img src="https://images.unsplash.com/photo-1489493512598-d08130f49bea?auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Maasai">
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent"></div>
+        <div class="absolute bottom-0 p-6 text-white"><span class="text-xs uppercase tracking-wider text-gold">Cultural Village</span><h3 class="font-serif text-3xl mt-1">Maasai Lands</h3><p class="text-sm opacity-80 mt-1">Kenya · Living heritage</p></div>
+      </a>
+    </div>
+
+    <!-- Map -->
+    <div class="mt-14 rounded-2xl overflow-hidden shadow-luxury reveal">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=20.0%2C-25.0%2C45.0%2C5.0&layer=mapnik" class="w-full h-96 border-0" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- LODGES -->
+<section id="lodges" class="py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Where You'll Rest</p>
+      <h2 class="font-serif text-4xl md:text-5xl text-forest-dark">Lodges & Accommodation</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden grid md:grid-cols-5 reveal">
+        <div class="img-zoom md:col-span-2 h-64 md:h-auto"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80" alt="Lodge"></div>
+        <div class="md:col-span-3 p-6">
+          <span class="text-xs uppercase tracking-wider text-gold">Luxury Safari Lodge</span>
+          <h3 class="font-serif text-2xl text-forest-dark mt-1">Acacia Crest Lodge</h3>
+          <p class="text-sm text-gray-600 mt-2">Plunge pools, infinity views, and a watering hole steps from your veranda.</p>
+          <div class="flex flex-wrap gap-2 mt-3 text-xs text-forest">
+            <span class="bg-forest/10 px-2 py-1 rounded">Spa</span><span class="bg-forest/10 px-2 py-1 rounded">Pool</span>
+            <span class="bg-forest/10 px-2 py-1 rounded">WiFi</span><span class="bg-forest/10 px-2 py-1 rounded">Bar</span>
+          </div>
+          <div class="flex items-center justify-between mt-5">
+            <div class="text-gold text-sm">★★★★★ <span class="text-gray-500 text-xs">(248 reviews)</span></div>
+            <a href="#book" class="btn-gold rounded-full px-4 py-2 text-xs font-semibold">Reserve</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden grid md:grid-cols-5 reveal">
+        <div class="img-zoom md:col-span-2 h-64 md:h-auto"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80" alt="Eco lodge"></div>
+        <div class="md:col-span-3 p-6">
+          <span class="text-xs uppercase tracking-wider text-gold">Eco-Lodge</span>
+          <h3 class="font-serif text-2xl text-forest-dark mt-1">Baobab Hollow</h3>
+          <p class="text-sm text-gray-600 mt-2">Solar-powered suites carved into ancient trees, with zero-waste kitchens.</p>
+          <div class="flex flex-wrap gap-2 mt-3 text-xs text-forest"><span class="bg-forest/10 px-2 py-1 rounded">Solar</span><span class="bg-forest/10 px-2 py-1 rounded">Farm-to-table</span><span class="bg-forest/10 px-2 py-1 rounded">Yoga</span></div>
+          <div class="flex items-center justify-between mt-5">
+            <div class="text-gold text-sm">★★★★★ <span class="text-gray-500 text-xs">(186 reviews)</span></div>
+            <a href="#book" class="btn-gold rounded-full px-4 py-2 text-xs font-semibold">Reserve</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden grid md:grid-cols-5 reveal">
+        <div class="img-zoom md:col-span-2 h-64 md:h-auto"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=900&q=80" alt="Tented"></div>
+        <div class="md:col-span-3 p-6">
+          <span class="text-xs uppercase tracking-wider text-gold">Tented Camp</span>
+          <h3 class="font-serif text-2xl text-forest-dark mt-1">Migration Camp</h3>
+          <p class="text-sm text-gray-600 mt-2">A mobile camp that follows the wildebeest — sleep where the herds roam.</p>
+          <div class="flex flex-wrap gap-2 mt-3 text-xs text-forest"><span class="bg-forest/10 px-2 py-1 rounded">Butler</span><span class="bg-forest/10 px-2 py-1 rounded">Bush dining</span><span class="bg-forest/10 px-2 py-1 rounded">Campfire</span></div>
+          <div class="flex items-center justify-between mt-5">
+            <div class="text-gold text-sm">★★★★☆ <span class="text-gray-500 text-xs">(92 reviews)</span></div>
+            <a href="#book" class="btn-gold rounded-full px-4 py-2 text-xs font-semibold">Reserve</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-ivory rounded-2xl overflow-hidden grid md:grid-cols-5 reveal">
+        <div class="img-zoom md:col-span-2 h-64 md:h-auto"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80" alt="Boutique"></div>
+        <div class="md:col-span-3 p-6">
+          <span class="text-xs uppercase tracking-wider text-gold">Boutique Hotel</span>
+          <h3 class="font-serif text-2xl text-forest-dark mt-1">Ivory House</h3>
+          <p class="text-sm text-gray-600 mt-2">A colonial-era manor reimagined — leather libraries, jazz, and gin trolleys at dusk.</p>
+          <div class="flex flex-wrap gap-2 mt-3 text-xs text-forest"><span class="bg-forest/10 px-2 py-1 rounded">Spa</span><span class="bg-forest/10 px-2 py-1 rounded">Cigar lounge</span><span class="bg-forest/10 px-2 py-1 rounded">Concierge</span></div>
+          <div class="flex items-center justify-between mt-5">
+            <div class="text-gold text-sm">★★★★★ <span class="text-gray-500 text-xs">(311 reviews)</span></div>
+            <a href="#book" class="btn-gold rounded-full px-4 py-2 text-xs font-semibold">Reserve</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONSERVATION -->
+<section id="conservation" class="py-28 bg-forest-dark text-ivory relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1551763270-c5d4eb0c5d4f?auto=format&fit=crop&w=2000&q=80')"></div>
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Conservation in Action</p>
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight">Travel that <em class="text-gold not-italic">gives back</em> to the land it explores.</h2>
+        <div class="divider-gold my-8 max-w-xs"></div>
+        <p class="text-ivory/80 leading-relaxed">Every booking funds anti-poaching units, reforestation, and scholarships for ranger families. We measure success in elephant calves born, acres restored, and children sent to school.</p>
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="#" class="btn-gold rounded-full px-6 py-3 text-sm font-semibold">Volunteer With Us</a>
+          <a href="#" class="btn-outline rounded-full px-6 py-3 text-sm font-semibold">Read Impact Report</a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-6 reveal">
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 text-center"><div class="font-serif text-5xl text-gold">120k</div><div class="text-xs uppercase tracking-wider mt-2 text-ivory/70">Acres protected</div></div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 text-center"><div class="font-serif text-5xl text-gold">340</div><div class="text-xs uppercase tracking-wider mt-2 text-ivory/70">Rangers funded</div></div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 text-center"><div class="font-serif text-5xl text-gold">68</div><div class="text-xs uppercase tracking-wider mt-2 text-ivory/70">Schools built</div></div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 text-center"><div class="font-serif text-5xl text-gold">22k</div><div class="text-xs uppercase tracking-wider mt-2 text-ivory/70">Trees planted/yr</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="py-28 bg-ivory">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Moments in the Wild</p>
+      <h2 class="font-serif text-4xl md:text-5xl text-forest-dark">Gallery</h2>
+    </div>
+    <div class="masonry">
+      <img class="w-full rounded-xl img-zoom" src="https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1489493512598-d08130f49bea?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&q=80" alt="">
+      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=800&q=80" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Traveler Stories</p>
+      <h2 class="font-serif text-4xl md:text-5xl text-forest-dark">What Our Guests Say</h2>
+    </div>
+    <div class="scroll-x flex gap-6 overflow-x-auto pb-6 snap-x">
+      <figure class="snap-start min-w-[320px] md:min-w-[420px] bg-ivory rounded-2xl p-8 shadow-luxury">
+        <div class="text-gold text-lg">★★★★★</div>
+        <blockquote class="font-serif text-2xl text-forest-dark mt-3 leading-snug">"Beyond a vacation — a transformation. Our guide read the bush like poetry."</blockquote>
+        <figcaption class="flex items-center gap-3 mt-6">
+          <img src="https://i.pravatar.cc/100?img=47" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div><div class="font-semibold text-forest-dark">Amelia Rhodes</div><div class="text-xs text-gray-500">London, UK · Luxury Serengeti</div></div>
+        </figcaption>
+      </figure>
+      <figure class="snap-start min-w-[320px] md:min-w-[420px] bg-ivory rounded-2xl p-8 shadow-luxury">
+        <div class="text-gold text-lg">★★★★★</div>
+        <blockquote class="font-serif text-2xl text-forest-dark mt-3 leading-snug">"Our kids still talk about the lion cubs. The camp made it magical for the whole family."</blockquote>
+        <figcaption class="flex items-center gap-3 mt-6">
+          <img src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div><div class="font-semibold text-forest-dark">The Okafor Family</div><div class="text-xs text-gray-500">Lagos, Nigeria · Okavango</div></div>
+        </figcaption>
+      </figure>
+      <figure class="snap-start min-w-[320px] md:min-w-[420px] bg-ivory rounded-2xl p-8 shadow-luxury">
+        <div class="text-gold text-lg">★★★★★</div>
+        <blockquote class="font-serif text-2xl text-forest-dark mt-3 leading-snug">"The photography mentoring transformed my portfolio. I came home a better artist."</blockquote>
+        <figcaption class="flex items-center gap-3 mt-6">
+          <img src="https://i.pravatar.cc/100?img=33" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div><div class="font-semibold text-forest-dark">Hiroshi Tanaka</div><div class="text-xs text-gray-500">Tokyo, Japan · Namibia Photo</div></div>
+        </figcaption>
+      </figure>
+      <figure class="snap-start min-w-[320px] md:min-w-[420px] bg-ivory rounded-2xl p-8 shadow-luxury">
+        <div class="text-gold text-lg">★★★★★</div>
+        <blockquote class="font-serif text-2xl text-forest-dark mt-3 leading-snug">"Ethical, intimate, jaw-dropping. We'll never travel another way."</blockquote>
+        <figcaption class="flex items-center gap-3 mt-6">
+          <img src="https://i.pravatar.cc/100?img=68" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div><div class="font-semibold text-forest-dark">Sofia & Marco</div><div class="text-xs text-gray-500">Milan, Italy · Big Five</div></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="py-28 bg-ivory">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex justify-between items-end mb-12 reveal">
+      <div><p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Field Journal</p><h2 class="font-serif text-4xl md:text-5xl text-forest-dark">From the Bush</h2></div>
+      <a href="#" class="hidden md:inline text-forest-dark font-semibold border-b-2 border-gold pb-1">All Stories →</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <article class="card-hover bg-white rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-56"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=900&q=80" alt=""></div>
+        <div class="p-6"><span class="text-xs uppercase text-gold tracking-wider">Wildlife</span><h3 class="font-serif text-xl text-forest-dark mt-2">Decoding the Great Migration</h3><p class="text-sm text-gray-600 mt-2">Two million hooves, one ancient instinct — here's when and where to witness it.</p></div>
+      </article>
+      <article class="card-hover bg-white rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-56"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=900&q=80" alt=""></div>
+        <div class="p-6"><span class="text-xs uppercase text-gold tracking-wider">Conservation</span><h3 class="font-serif text-xl text-forest-dark mt-2">Meet the Women Rangers of Olare</h3><p class="text-sm text-gray-600 mt-2">A new generation of protectors is rewriting what wildlife guarding looks like.</p></div>
+      </article>
+      <article class="card-hover bg-white rounded-2xl overflow-hidden reveal">
+        <div class="img-zoom h-56"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80" alt=""></div>
+        <div class="p-6"><span class="text-xs uppercase text-gold tracking-wider">Travel Tips</span><h3 class="font-serif text-xl text-forest-dark mt-2">Packing for a Luxury Safari</h3><p class="text-sm text-gray-600 mt-2">From breathable linen to the perfect binoculars — what to bring, and what to leave.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14">
+    <div class="reveal">
+      <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Get in Touch</p>
+      <h2 class="font-serif text-4xl md:text-5xl text-forest-dark">Begin Your Journey</h2>
+      <p class="text-gray-600 mt-4 max-w-md">Our safari curators reply within 24 hours with a hand-built itinerary.</p>
+
+      <div class="mt-10 space-y-5 text-gray-700">
+        <div class="flex items-start gap-4"><div class="w-10 h-10 rounded-full bg-forest/10 text-forest grid place-items-center">📞</div><div><div class="text-xs uppercase tracking-wider text-gray-500">Phone</div><div class="font-semibold">+254 700 123 456</div></div></div>
+        <div class="flex items-start gap-4"><div class="w-10 h-10 rounded-full bg-forest/10 text-forest grid place-items-center">✉</div><div><div class="text-xs uppercase tracking-wider text-gray-500">Email</div><div class="font-semibold">hello@savannasafaris.com</div></div></div>
+        <div class="flex items-start gap-4"><div class="w-10 h-10 rounded-full bg-forest/10 text-forest grid place-items-center">📍</div><div><div class="text-xs uppercase tracking-wider text-gray-500">Office</div><div class="font-semibold">Karen, Nairobi · Kenya</div></div></div>
+      </div>
+
+      <div class="flex gap-3 mt-8">
+        <a href="#" class="w-10 h-10 rounded-full border border-forest/30 grid place-items-center text-forest hover:bg-forest hover:text-white">f</a>
+        <a href="#" class="w-10 h-10 rounded-full border border-forest/30 grid place-items-center text-forest hover:bg-forest hover:text-white">in</a>
+        <a href="#" class="w-10 h-10 rounded-full border border-forest/30 grid place-items-center text-forest hover:bg-forest hover:text-white">ig</a>
+        <a href="#" class="w-10 h-10 rounded-full border border-forest/30 grid place-items-center text-forest hover:bg-forest hover:text-white">yt</a>
+      </div>
+
+      <div class="mt-8 rounded-2xl overflow-hidden">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=36.6%2C-1.4%2C37.0%2C-1.2&layer=mapnik" class="w-full h-56 border-0" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <form class="bg-ivory rounded-2xl p-8 md:p-10 shadow-luxury space-y-5 reveal">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div><label class="text-xs uppercase tracking-wider text-gray-500">First name</label><input class="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest" type="text"></div>
+        <div><label class="text-xs uppercase tracking-wider text-gray-500">Last name</label><input class="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest" type="text"></div>
+      </div>
+      <div><label class="text-xs uppercase tracking-wider text-gray-500">Email</label><input class="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest" type="email"></div>
+      <div><label class="text-xs uppercase tracking-wider text-gray-500">Interested in</label>
+        <select class="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest">
+          <option>Luxury Safari</option><option>Family Adventure</option><option>Photography Safari</option><option>Cultural Tour</option><option>Custom Itinerary</option>
+        </select>
+      </div>
+      <div><label class="text-xs uppercase tracking-wider text-gray-500">Tell us about your dream trip</label><textarea rows="4" class="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-forest"></textarea></div>
+      <button class="btn-gold rounded-full px-8 py-3.5 font-semibold w-full sm:w-auto">Send Inquiry →</button>
+    </form>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-20 bg-forest text-ivory">
+  <div class="max-w-4xl mx-auto px-6 text-center reveal">
+    <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Stay Wild</p>
+    <h2 class="font-serif text-3xl md:text-4xl">Dispatches from the savanna, in your inbox.</h2>
+    <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <input type="email" placeholder="Your email" class="flex-1 rounded-full px-5 py-3 text-gray-800 focus:outline-none">
+      <button class="btn-gold rounded-full px-6 py-3 font-semibold">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forest-dark text-ivory/80 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-2 text-xl font-serif text-white"><span class="text-gold text-2xl">✦</span> Savanna Safaris</div>
+      <p class="text-sm mt-4 leading-relaxed">Crafting luxurious, conscientious safari journeys across the African continent since 1999.</p>
+      <div class="mt-5 text-xs">Weather in Nairobi · <span class="text-gold">☀ 26°C</span></div>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Explore</h4>
+      <ul class="space-y-2 text-sm"><li><a href="#about" class="hover:text-gold">About Us</a></li><li><a href="#packages" class="hover:text-gold">Safari Packages</a></li><li><a href="#destinations" class="hover:text-gold">Destinations</a></li><li><a href="#lodges" class="hover:text-gold">Lodges</a></li></ul>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Support</h4>
+      <ul class="space-y-2 text-sm"><li><a href="#conservation" class="hover:text-gold">Conservation</a></li><li><a href="#blog" class="hover:text-gold">Field Journal</a></li><li><a href="#contact" class="hover:text-gold">Contact</a></li><li><a href="#" class="hover:text-gold">FAQ</a></li></ul>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Trust</h4>
+      <ul class="space-y-2 text-sm"><li>Secure payments by Stripe</li><li>Travel insured · ATOL protected</li><li>1% for the Planet member</li></ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10 mt-12 pt-6 max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-ivory/60">
+    <div>© 2025 Savanna Safaris. All rights reserved.</div>
+    <div class="flex gap-5"><a href="#" class="hover:text-gold">Privacy</a><a href="#" class="hover:text-gold">Terms</a><a href="#" class="hover:text-gold">Cookies</a></div>
+  </div>
+</footer>
+
+<!-- Live chat bubble -->
+<button class="chat-bubble fixed bottom-6 right-6 z-40 bg-gold text-forest-dark w-14 h-14 rounded-full shadow-luxury text-2xl grid place-items-center" aria-label="Live chat">💬</button>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) nav.classList.add('nav-scrolled'); else nav.classList.remove('nav-scrolled');
+  });
+  // Mobile menu
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
